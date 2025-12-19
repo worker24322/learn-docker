@@ -15,4 +15,9 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: Create a new file
+        run : touch github-action-file.txt
+      - name: Again list files in the repository
+        run: |
+          ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
