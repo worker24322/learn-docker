@@ -4,8 +4,7 @@ on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
-    env:
-      JOB_VAR: "This is a job variable"
+    environment: ENV_TEST
     steps:
       - run: echo " ${{ env.JOB_VAR }} và ${{ secrets.MYSQL_PASSWORD }} event."
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
