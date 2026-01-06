@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+console.log('Server started at', new Date().toISOString());
 app.get('/', (req, res) => {
     console.log(new Date().toISOString());
     res.send('Hello World');
