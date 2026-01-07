@@ -42,6 +42,8 @@ jobs:
         with:
           node-version: '20'
       - run: npm install -g bats
-      - run: bats -v
-      - name: run npm install
-        run : npm install && echo "install success"
+      - run: ;bats -v
+  install-npm:
+    runs-on: u
+    steps:
+      - run: npm install
