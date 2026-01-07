@@ -34,28 +34,53 @@ name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
-  check-bats-version:
+  job1: # Tên job này là 'job1'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm install -g bats
-      - run: bats -v
-      - name: Upload node_modules
+      - run: mkdir build && echo "hello" > build/test.txt # Tạo thử 1 file
+
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: my-packages
-          path: node_modules/
-  install-npm:
-    needs: check-bats-version
+          name: my-packages # Đặt tên ở đây
+          path: build/      # Thư mục muốn gửi đi
+  job2:
+    needs: job1 # QUAN TRỌNG: Bảo Job 2 đợi Job 1 làm xong đã!
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - name: Download node_modules
+
+      - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
-          name: my-packages
-          path: node_modules/
-      - run: bats -v
+          name: my-packages # Phải trùng khớp 100% tên ở trên
+          path: build/      # Nơi muốn tải về máy 2
+
+      - run: cat build/test.txt # Kiểm tra xem file đã sang chưa
+# jobs:
+#   check-bats-version:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v5
+#       - uses: actions/setup-node@v4
+#         with:
+#           node-version: '20'
+#       - run: npm install -g bats
+#       - run: bats -v
+#       - name: Upload node_modules
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: my-packages
+#           path: node_modules/
+#   install-npm:
+#     needs: check-bats-version
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v5
+#       - name: Download node_modules
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: my-packages
+#           path: node_modules/
+#       - run: bats -v
