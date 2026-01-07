@@ -68,6 +68,7 @@ jobs:
           node-version: '20'
       - run: npm install -g bats
       - run: bats -v
+      - run: ls
       - name: Upload node_modules
         uses: actions/upload-artifact@v4
         with:
