@@ -42,7 +42,7 @@ jobs:
         with:
           node-version: '20'
       - run: npm install -g bats
-      - run: ;bats -v
+      - run:;bats -v
   install-npm:
     runs-on: u
     steps:
