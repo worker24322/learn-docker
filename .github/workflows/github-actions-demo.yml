@@ -83,5 +83,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: my-packages
-          path: package.json
-      - run: cat package.json
+          path: store
+      - run: ls 
+      - run: cat store/package.json
