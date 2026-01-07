@@ -70,5 +70,5 @@ jobs:
       - run : echo "hello" >> /test-thien/test.txt
       - run : npm install
       - run: npm run test-hello
-      - run: docker build -t my-node-app .
-      - run: docker run -d --name my-node-app my-node-app
+      - run: docker build -t cicd-app .
+      - run: docker run -dp 3000:3000 --name cicd-app cicd-app
