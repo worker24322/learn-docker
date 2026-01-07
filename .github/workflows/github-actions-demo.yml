@@ -44,6 +44,6 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
   install-npm:
-    runs-on: u
+    runs-on: ubuntu-latest
     steps:
       - run: npm install
