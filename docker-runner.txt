@@ -1,0 +1,6 @@
+docker run -d --restart always --name my-runner \
+  -e REPO_URL=https://github.com/user/repo \
+  -e RUNNER_NAME=docker-runner \
+  -e RUNNER_TOKEN=MÃ_TOKEN_CỦA_BẠN \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  myoung34/github-runner
