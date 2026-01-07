@@ -67,5 +67,6 @@ jobs:
         with:
           node-version: '20'
       - run : mkdir /test-thien
+      - run : echo "hello" >> /test-thien/test.txt
       - run : npm install
       - run: npm run test-hello
