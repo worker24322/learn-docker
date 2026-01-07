@@ -44,6 +44,4 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
       - name: run npm install
-        run : npm install
-      - name: run npm run start
-        run : npm run start
+        run : npm install && echo "install success"
