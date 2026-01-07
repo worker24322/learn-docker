@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test-hello": "ls index-test.js && echo \"File đã tồn tại rồi!\" || touch index-test.js && echo \"File đã tạo\"",
+    "test-hello": "echo \"run script test-hello\"",
     "start": "node index.js"
   },
   "keywords": [],

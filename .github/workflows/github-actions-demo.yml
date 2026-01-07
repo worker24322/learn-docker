@@ -59,31 +59,12 @@ on: [push]
 
 #       - run: cat build/test.txt # Kiểm tra xem file đã sang chưa
 jobs:
-  check-bats-version:
-    runs-on: ubuntu-latest
+  start-job:
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install
-      - run: npm install -g bats
-      - run: bats -v
-      - run: ls
-      - name: Upload node_modules
-        uses: actions/upload-artifact@v4
-        with:
-          name: my-packages
-          path: package.json
-  install-npm:
-    needs: check-bats-version
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
-        with:
-          name: my-packages
-          path: store
-      - run: ls 
-      - run: cat store/package.json
+      - run : npm install
+      - run: npm run test-hello
